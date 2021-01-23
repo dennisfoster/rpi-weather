@@ -7,33 +7,15 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.post("/room_data", async (req, res) => {
+app.get("/room_data", async (req, res) => {
     try {
         const sensorData = await sensor.read(11, 4);
-
-        // res.send({
-        //     temperature: sensorData.temperature.toFixed(1),
-        //     humidity: sensorData.humidity.toFixed(1),
-        // });
         res.send({
-            fulfillment_response: {
-                messages: [
-                    {
-                        text: {
-                            text: [
-                                "Current humidity is " +
-                                    sensorData.humidity.toFixed(0) +
-                                    " percent, current temperature is " +
-                                    sensorData.temperature.toFixed(0) +
-                                    " degrees.",
-                            ],
-                        },
-                    },
-                ],
-            },
+            temperature: sensorData.temperature.toFixed(1),
+            humidity: sensorData.humidity.toFixed(1),
         });
     } catch (err) {
-        res.send("Failed to read sensor data:", err);
+        res.send({ error: err });
     }
 });
 
