@@ -23,9 +23,9 @@ app.post("/room_data", async (req, res) => {
                             //fulfillment text response to be sent to the agent
                             text: [
                                 "Current humidity is " +
-                                    sensorData.humidity.toInt() +
+                                    sensorData.humidity.parseInt() +
                                     ", current temperature is " +
-                                    sensorData.temperature.toInt() +
+                                    sensorData.temperature.parseInt() +
                                     ".",
                             ],
                         },
