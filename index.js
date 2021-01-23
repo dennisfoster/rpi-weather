@@ -33,7 +33,7 @@ app.post("/room_data", async (req, res) => {
             },
         });
     } catch (err) {
-        res.send(err);
+        res.send("Failed to read sensor data:", err);
     }
 });
 
