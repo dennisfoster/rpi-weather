@@ -10,9 +10,11 @@ app.get("/", (req, res) => {
 app.get("/room_data", async (req, res) => {
     try {
         const sensorData = await sensor.read(11, 4);
-        const data = `temp: ${sensorData.temperature.toFixed(1)}°C, ` + `humidity: ${sensorData.humidity.toFixed(1)}%`;
 
-        res.send(data);
+        res.send({
+            temperature: sensorData.temperature.toFixed(1),
+            humidity: sensorData.humidity.toFixed(1),
+        });
     } catch (err) {
         res.send("Failed to read sensor data:", err);
     }
