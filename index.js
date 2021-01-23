@@ -16,6 +16,16 @@ app.post("/room_data", async (req, res) => {
         //     humidity: sensorData.humidity.toFixed(1),
         // });
         res.send({
+            fulfillment_response: {
+                messages: [
+                    {
+                        text: {
+                            //fulfillment text response to be sent to the agent
+                            text: ["Hi! This is a webhook response"],
+                        },
+                    },
+                ],
+            },
             payload: {
                 google: {
                     expectUserResponse: false,
