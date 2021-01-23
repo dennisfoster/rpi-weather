@@ -20,7 +20,6 @@ app.post("/room_data", async (req, res) => {
                 messages: [
                     {
                         text: {
-                            //fulfillment text response to be sent to the agent
                             text: [
                                 "Current humidity is " +
                                     sensorData.humidity.parseInt() +
@@ -34,7 +33,7 @@ app.post("/room_data", async (req, res) => {
             },
         });
     } catch (err) {
-        res.send("Failed to read sensor data:", err);
+        res.send(err);
     }
 });
 
