@@ -21,24 +21,16 @@ app.post("/room_data", async (req, res) => {
                     {
                         text: {
                             //fulfillment text response to be sent to the agent
-                            text: ["Hi! This is a webhook response"],
+                            text: [
+                                "Current humidity is " +
+                                    sensorData.humidity.toInt() +
+                                    ", current temperature is " +
+                                    sensorData.temperature.toInt() +
+                                    ".",
+                            ],
                         },
                     },
                 ],
-            },
-            payload: {
-                google: {
-                    expectUserResponse: false,
-                    richResponse: {
-                        items: [
-                            {
-                                simpleResponse: {
-                                    textToSpeech: "this is a simple response",
-                                },
-                            },
-                        ],
-                    },
-                },
             },
         });
     } catch (err) {
