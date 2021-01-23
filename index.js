@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.get("/room_data", async (req, res) => {
+app.post("/room_data", async (req, res) => {
     try {
         const sensorData = await sensor.read(11, 4);
 
