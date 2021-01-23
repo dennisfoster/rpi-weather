@@ -22,9 +22,9 @@ app.post("/room_data", async (req, res) => {
                         text: {
                             text: [
                                 "Current humidity is " +
-                                    sensorData.humidity.toFixed(1) +
+                                    sensorData.humidity.toFixed(0) +
                                     ", current temperature is " +
-                                    sensorData.temperature.toFixed(1) +
+                                    sensorData.temperature.toFixed(0) +
                                     ".",
                             ],
                         },
