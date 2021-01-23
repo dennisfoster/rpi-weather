@@ -16,7 +16,20 @@ app.get("/room_data", async (req, res) => {
         //     humidity: sensorData.humidity.toFixed(1),
         // });
         res.send({
-            fulfillment_response: "Test test",
+            payload: {
+                google: {
+                    expectUserResponse: false,
+                    richResponse: {
+                        items: [
+                            {
+                                simpleResponse: {
+                                    textToSpeech: "this is a simple response",
+                                },
+                            },
+                        ],
+                    },
+                },
+            },
         });
     } catch (err) {
         res.send("Failed to read sensor data:", err);
